@@ -1,3 +1,60 @@
+$.fn.dataTable.ext.order['dom-text'] = function  ( settings, col )
+{
+    return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
+        return $('input', td).val();
+    } );
+}
+ 
+/* Create an array with the values of all the input boxes in a column, parsed as numbers */
+$.fn.dataTable.ext.order['dom-text-numeric'] = function  ( settings, col )
+{
+    return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
+        return $('input', td).val() * 1;
+    } );
+}
+ 
+/* Create an array with the values of all the select options in a column */
+$.fn.dataTable.ext.order['dom-select'] = function  ( settings, col )
+{
+    return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
+        return $('select', td).val();
+    } );
+}
+
+/* numeric comma */ 
+jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+    "numeric-comma-pre": function ( a ) {
+        var x = (a == "-") ? 0 : a.replace( /,/, "." );
+        return parseFloat( x );
+    },
+ 
+    "numeric-comma-asc": function ( a, b ) {
+        return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+    },
+ 
+    "numeric-comma-desc": function ( a, b ) {
+        return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+    }
+} ); 
+
+
+jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+    "formatted-num-pre": function ( a ) {
+        a = (a === "-" || a === "") ? 0 : a.replace( /[^\d\-\.]/g, "" );
+        return parseFloat( a );
+    },
+ 
+    "formatted-num-asc": function ( a, b ) {
+        return a - b;
+    },
+ 
+    "formatted-num-desc": function ( a, b ) {
+        return b - a;
+    }
+} );
+
+
+
 function fnFormatDetails ( oTable, nTr )
 {
     var aData = oTable.fnGetData( nTr );
@@ -12,10 +69,7 @@ function fnFormatDetails ( oTable, nTr )
 
 $(document).ready(function() {
 
-    $('#dynamic-table').dataTable( {
-        "aaSorting": [[ 4, "desc" ]]
-    } );
-
+   
     /*
      * Insert a 'details' column to the table
      */
@@ -36,10 +90,31 @@ $(document).ready(function() {
      * Initialse DataTables, with no sorting on the 'details' column
      */
     var oTable = $('#hidden-table-info').dataTable( {
+         "columns": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "orderDataType": "dom-select" },
+            // { "orderDataType": "dom-text-numeric" },            
+            { "orderDataType": "numeric-comma" },
+            { "orderDataType": "dom-select" },
+            // { "orderDataType": "dom-text-numeric" },            
+            { "orderDataType": "numeric-comma" },
+            { "orderDataType": "dom-select" }
+            
+        ],
+        columnDefs: [
+             { type: 'numeric-comma', targets: 8}
+        ],
         "aoColumnDefs": [
             { "bSortable": false, "aTargets": [ 0 ] }
         ],
-        "aaSorting": [[1, 'asc']]
+        "aaSorting": [[1, 'desc']]
+        
     });
 
     /* Add event listener for opening and closing details
