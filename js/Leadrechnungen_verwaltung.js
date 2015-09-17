@@ -18,20 +18,16 @@ var EditableTable = function () {
             function editRow(oTable, nRow) {
                 var aData = oTable.fnGetData(nRow);
                 var jqTds = $('>td', nRow);
-                //jqTds[0].innerHTML = '<input type="text" class="form-control small" value="' + aData[0] + '">';
-                jqTds[1].innerHTML = '<input type="text" class="form-control small" value="' + aData[1] + '">';
-                jqTds[2].innerHTML = '<input type="text" class="form-control small" value="' + aData[2] + '">';
-                jqTds[3].innerHTML = '<input type="text" class="form-control small" value="' + aData[3] + '">';
-                jqTds[4].innerHTML = '<input type="text" class="form-control small" value="' + aData[4] + '">';
-                jqTds[5].innerHTML = '<input type="text" class="form-control small" value="' + aData[5] + '">';
-                jqTds[6].innerHTML = '<input type="text" class="form-control small" value="' + aData[6] + '">';
-                jqTds[7].innerHTML = '<input type="text" class="form-control small" value="' + aData[7] + '">';
-                jqTds[8].innerHTML = '<input type="text" class="form-control small" value="' + aData[8] + '">';
-                jqTds[9].innerHTML = '<input type="text" class="form-control small" value="' + aData[9] + '">';
-                jqTds[10].innerHTML = '<input type="text" class="form-control small" value="' + aData[10] + '">';
-                jqTds[11].innerHTML = '<input type="text" class="form-control small" value="' + aData[11] + '">';
-                jqTds[12].innerHTML = '<input type="text" class="form-control small" value="' + aData[12] + '">';
-                jqTds[13].innerHTML = '<input type="text" class="form-control small" value="' + aData[13] + '">';
+
+                //get current month                
+                var currDate = new Date();
+                var currMonth = currDate.getMonth();
+                
+                for ( var i=0; i<currMonth+1; i++){
+                    jqTds[i+1].innerHTML = '<input type="text" class="form-control small" value="' + aData[i+1] + '">';
+
+                }
+               
                 jqTds[14].innerHTML = '<a class="edit" href="">Save</a> <a class="cancel" href="">Cancel</a>';                
             }
 
