@@ -5986,6 +5986,13 @@ a.guest-on i {
     margin-left: 5px;
 }
 
+<<<<<<< HEAD
+=======
+.margin-top-10{
+    margin-top: 10px;
+}
+
+>>>>>>> origin/master
 /**************Custom Override CSS***************************/
 .tools a.font-white{
     color: #fff;
@@ -6015,4 +6022,15 @@ hr{
 .grey-row{
     background-color: #E8E8F1;
 }
+<<<<<<< HEAD
     
+=======
+
+table#ausTable{
+    max-width: 1300px !important;
+}
+
+#ausTable input{
+width: 70px;
+}    
+>>>>>>> origin/master

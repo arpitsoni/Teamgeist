@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Arpit Soni">
+    <meta name="keyword" content="805Stats, HtmlExperts">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>Städtezuordnung</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!--<link href="css/navbar-fixed-top.css" rel="stylesheet">-->
+
+     <!--dynamic table-->
+    <link href="assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
+    <link href="assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/data-tables/DT_bootstrap.css" />
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body class="full-width">
+
+  <section id="container" class="">
+      <!--header start-->
+     <header class="header white-bg">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="fa fa-bars"></span> </button>
+    <!--logo start-->
+        <a href="http://rohitthetester.com/teamgeist/admin/home/index.php" class="logo"> Teamgeist Leadverwaltung</a>
+        <div class="horizontal-menu navbar-collapse collapse ">
+      <ul class="nav navbar-nav">
+        <li><a href="http://rohitthetester.com/teamgeist/admin/home/index.php">Leadverwaltung</a></li>
+                <li><a href="http://rohitthetester.com/teamgeist/admin/users">Benutzerverwaltung</a></li>
+        <li class="dropdown">
+              <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">Auswertung</a>
+                <ul class="dropdown-menu">
+                  <li><a href="Auswertung.html">Auswertung</a></li>
+                  <li><a href="Leadrechnungen_verwaltung.html">Leadrechnungen verwaltung</a></li>             
+                </ul>
+            </li>
+        <li class="active"><a href="http://rohitthetester.com/teamgeist/admin/association">Städtezuordnung</a></li>
+              </ul>
+    </div>
+    <div class="top-nav ">
+      <ul class="nav pull-right top-menu">
+        <!-- user login dropdown start-->
+        <li> <a data-toggle="dropdown" class="dropdown-toggle" href="#"> Arpit-Admin</a></li>
+        <li><a href="http://rohitthetester.com/teamgeist/admin/login/logout.php"><i class="fa fa-key"></i> Log Out</a></li>
+       
+        <!-- user login dropdown end -->
+      </ul>
+    </div>
+  </div>
+</header>
+      <!--header end-->
+      <!--sidebar start-->
+
+      <!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+        <section class="wrapper">
+           <!-- page start-->
+           <div class="row">
+            <div class="col-md-6">
+            <form class="form-inline">
+              <div class="form-group">
+                <input type="text" placeholder="City Name" class="form-control col-md-4" />
+              </div>
+              <div class="form-group">
+              <select class="form-control col-md-4">
+                <option>Berlin</option>
+                <option>Nord</option>
+                <option>Sud</option>
+                <option>West</option>
+                <option>Ost</option>
+              </select>
+            </div>
+              <button class="btn btn-primary">hinzufügen</button>
+            </form>
+          </div>
+           </div>
+
+           <div class="row margin-top-10">
+             <div class="col-sm-12">
+                      <section class="panel">
+                         
+                          <table class="table table-bordered table-hover" id="staTable">
+                              <thead>
+                              <tr class="grey-row">
+                                  <th>S.NO</th>
+                                  <th>City</th>
+                                  <th>Standort</th>
+                                  <th>User</th>
+                                  <th>Date Modified</th>                                  
+                              </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>Dresden</td>
+                                  <td>Nord</td>
+                                  <td>Admin</td>
+                                  <td>15/09/2015</td>                                  
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>Berlin</td>
+                                  <td>Berlin</td>
+                                  <td>Admin</td>
+                                  <td>15/09/2015</td>                                  
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>Munich</td>
+                                  <td>Sud</td>
+                                  <td>Admin</td>
+                                  <td>15/09/2015</td>                                  
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>Frankfurt</td>
+                                  <td>West</td>
+                                  <td>Admin</td>
+                                  <td>15/09/2015</td>                                  
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>city 5</td>
+                                  <td>Nord</td>
+                                  <td>Admin</td>
+                                  <td>15/09/2015</td>                                  
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>city 6</td>
+                                  <td>Nord</td>
+                                  <td>Admin</td>
+                                  <td>15/09/2015</td>                                  
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>city 7</td>
+                                  <td>Nord</td>
+                                  <td>Admin</td>
+                                  <td>15/09/2015</td>                                  
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>city 8</td>
+                                  <td>Nord</td>
+                                  <td>Admin</td>
+                                  <td>15/09/2015</td>                                  
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>city 9</td>
+                                  <td>Nord</td>
+                                  <td>Admin</td>
+                                  <td>15/09/2015</td>                                  
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>city 10</td>
+                                  <td>Nord</td>
+                                  <td>Admin</td>
+                                  <td>15/09/2015</td>                                  
+                                </tr>                             
+                              </tbody>
+                          </table>
+                      </section>
+                  </div>
+           </div>
+         
+      </section>
+      <!--main content end-->
+      <!--footer start-->
+      <footer class="site-footer">
+          <div class="text-center">
+              2015 &copy; Teamgeist
+              <a href="#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>
+      <!--footer end-->
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+    <script type="text/javascript" src="js/hover-dropdown.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="js/respond.min.js" ></script>    
+    <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="assets/data-tables/DT_bootstrap.js"></script>
+    
+
+    <!--right slidebar-->
+    <script src="js/slidebars.min.js"></script>
+
+    <!--common script for all pages-->
+    <script src="js/common-scripts.js"></script>
+
+    <!--script for this page only-->
+    <script src="js/Städtezuordnung.js"></script>
+
+
+  </body>
+</html>
