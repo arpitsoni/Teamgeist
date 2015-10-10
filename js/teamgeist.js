@@ -1,3 +1,10 @@
+/* Create an array with the values of all the input boxes in a column, parsed as numbers */
+$.fn.dataTable.ext.order['dom-text-numeric'] = function  ( settings, col )
+{
+    return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
+        return $('input', td).val() * 1;
+    } );
+}
 
 //date picker start
 

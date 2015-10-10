@@ -1,29 +1,45 @@
 function fnFormatDetails ( oTable, nTr )
 {
     var aData = oTable.fnGetData( nTr );
-    var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
-    sOut += '<tr><td>Rendering engine:</td><td>'+aData[1]+' '+aData[4]+'</td></tr>';
-    sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
-    sOut += '<tr><td>Extra info:</td><td>And any further details here (img etc)</td></tr>';
-    sOut += '</table>';
+    var sOut = '<form class="form-horizontal "><div class="form-group"><label class="col-sm-2 control-label">Ansprechpartner Name</label><div class="col-sm-10"><input type="text" class="form-control" maxlength="20"></div></div>';
+    
+    
+     sOut += '<div class="form-group"><label class="col-sm-2 control-label">Email</label><div class="col-sm-10"><input type="text" class="form-control" maxlength="20" ></div></div>';
+     sOut += '<div class="form-group"><label class="col-sm-2 control-label">Tel</label><div class="col-sm-10"><input type="text" class="form-control" maxlength="20" ></div></div>';
+     sOut += '<div class="form-group"><label class="col-sm-2 control-label">Firma</label><div class="col-sm-10"><input type="text" class="form-control" maxlength="20" ></div></div>';
+     sOut += '<div class="form-group"><label class="col-sm-2 control-label">Ort</label><div class="col-sm-10"><input type="text" class="form-control" maxlength="20" ></div></div>';
+     sOut += '<div class="form-group"><label class="col-sm-2 control-label">Datum</label><div class="col-sm-10"><input type="text" class="form-control" maxlength="20" ></div></div>';
+     sOut += '<div class="form-group"><label class="col-sm-2 control-label">Notiz</label><div class="col-sm-10"><textarea class="form-control" rows="3" cols="50"></textarea></div></div>';     
+     sOut += '<div class="form-group"><div class="col-sm-offset-2 col-sm-10"><button type="submit" class="btn btn-primary">speichern</button></div></div><hr/>';
+
+     sOut += '<div class="form-group"><label class="col-sm-2 control-label">12.08.2015 23:55</label><div class="col-sm-10"><span class="form-control bagde light-green-badge" maxlength="20" >Zentrale: Standort Berlin zugerordnet</span></div></div>';
+     sOut += '<div class="form-group"><label class="col-sm-2 control-label">12.08.2015 23:55</label><div class="col-sm-10"><span class="form-control bagde light-green-badge" maxlength="20" >Admin: Standort Berlin zugerordnet</span></div></div>';
+     sOut += '<div class="form-group"><label class="col-sm-2 control-label">12.08.2015 23:55</label><div class="col-sm-10"><span class="form-control bagde light-green-badge" maxlength="20" >West: Standort Berlin zugerordnet</span></div></div>';    
+     sOut += '<div class="form-group"><label class="col-sm-2 control-label">12.08.2015 23:55</label><div class="col-sm-10"><span class="form-control bagde light-green-badge" maxlength="20" >Nord: Standort Berlin zugerordnet</span></div></div>';    
+     sOut += '<div class="form-group"><label class="col-sm-2 control-label"></label><div class="col-sm-10"><textarea class="form-control" rows="3" cols="50" placeholder="Kommentar hinzufugen"></textarea></div></div>';  
+     sOut += '<div class="form-group"><div class="col-sm-offset-2 col-sm-10"><button type="submit" class="btn btn-primary">Kommentar hinzufugen</button></div></div>';
+
+     sOut += '</form>';
+
+
+   
+
 
     return sOut;
 }
 
 $(document).ready(function() {
 
-    $('#dynamic-table').dataTable( {
-        "aaSorting": [[ 4, "desc" ]]
-    } );
-
+   
     /*
      * Insert a 'details' column to the table
      */
     var nCloneTh = document.createElement( 'th' );
     var nCloneTd = document.createElement( 'td' );
+    nCloneTh.innerHTML = 'Action';
     nCloneTd.innerHTML = '<img src="img/details_open.png">';
     nCloneTd.className = "center";
-
+    
     $('#hidden-table-info thead tr').each( function () {
         this.insertBefore( nCloneTh, this.childNodes[0] );
     } );
@@ -36,8 +52,22 @@ $(document).ready(function() {
      * Initialse DataTables, with no sorting on the 'details' column
      */
     var oTable = $('#hidden-table-info').dataTable( {
-        "aoColumnDefs": [
-            { "bSortable": false, "aTargets": [ 0 ] }
+        // "aoColumnDefs": [
+        //     { "bSortable": false, "aTargets": [ 1 ] }
+        // ],
+        "columns": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "orderDataType": "dom-select" },
+            { "orderDataType": "dom-text-numeric" },
+            { "orderDataType": "dom-select" },
+            { "orderDataType": "dom-text-numeric" },
+            { "orderDataType": "dom-select" }
         ],
         "aaSorting": [[1, 'asc']]
     });
@@ -46,7 +76,7 @@ $(document).ready(function() {
      * Note that the indicator for showing which row is open is not controlled by DataTables,
      * rather it is done here
      */
-    $(document).on('click','#hidden-table-info tbody td img',function () {
+    $(document).on('click','#hidden-table-info tbody td:first-child img',function () {
         var nTr = $(this).parents('tr')[0];
         if ( oTable.fnIsOpen(nTr) )
         {
